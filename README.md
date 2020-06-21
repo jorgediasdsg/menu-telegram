@@ -23,10 +23,10 @@
 
 ### Para testar:
 
-#### Requisição GET: http://localhost/tickets
-#### Requisição POST: http://localhost/tickets
-#### Requisição PUT: http://localhost/tickets/id
-#### Requisição DELETE: http://localhost/tickets/id
+#### Requisição GET: http://localhost:3333/tickets
+#### Requisição POST: http://localhost:3333/tickets
+#### Requisição PUT: http://localhost:3333/tickets/id
+#### Requisição DELETE: http://localhost:3333/tickets/id
 
 
 # Enjoy!
