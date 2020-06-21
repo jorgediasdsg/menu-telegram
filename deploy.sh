@@ -25,11 +25,8 @@ sed -i 's/"license": "MIT",/"license": "MIT","scripts":{"dev":"nodemon"},/g' pac
 sed -i 's/"main": "index.js",/"main": "src\/index.js",/g' package.json
 echo "Criando hello world"
 echo "
-
-
-
 const express = require('express');
-const { uuid } = require('uuidv4')
+const { uuid, isUuid } = require('uuidv4')
 
 const app = express();
 
@@ -50,8 +47,35 @@ app.use(express.json());
  * Route Params: Identificar recurso para Atualizar/Deletar
  * Request Body: Conteudo na hora de criar ou atualizar (JSON) * 
  */
+/**
+ * Middleware:
+ * 
+ * Interceptador de requisições que pode interromper totalente a requisição ou alterar dados da requisição.
+ */
 
 const tickets = [];
+
+//Middleware
+function logRequest(request, response, next){
+    console.log(request);
+    const {method, url} = request;
+    const logLabel = `[${method.toUpperCase()}] ${url}`
+    console.time(logLabel); //Inicia a contagem até o próximo console.time com a mesma variável. Retorna o tempo entre elas.
+    next(); //Chama o próximo middleware
+    console.timeEnd(logLabel);
+}
+
+function validateTicketId(request, response, next){
+    const { id } = request.params;
+    if(!isUuid(id)) {
+        return response.status(400).json({message: 'Invalid ticket ID.'});
+    }
+    return next();
+}
+
+app.use(logRequest);
+
+app.use('/tickets/:id', validateTicketId);
 
 app.get('/tickets', (request, response) => {
     // Capturando query caso venha com filtragem no campo name.
@@ -114,7 +138,6 @@ app.delete('/tickets/:id', (request, response) => {
 app.listen(3333, () => {
     console.log('Back-end started!')
 })
-
 " > src/index.js
 echo "Iniciando NODE em $PWD/src/index.js"
 echo "Acesse a aplicação http://localhost:3333/"
