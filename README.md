@@ -22,10 +22,11 @@
   <code>git clone git@github.com:jorgediasdsg/node-cfg.git && cd node-cfg && ./deploy.sh</code>
 
 ### Para testar:
-####Requisição GET: http://localhost/tickets
-####Requisição POST: http://localhost/tickets
-####Requisição PUT: http://localhost/tickets/id
-####Requisição DELETE: http://localhost/tickets/id
+
+#### Requisição GET: http://localhost/tickets
+#### Requisição POST: http://localhost/tickets
+#### Requisição PUT: http://localhost/tickets/id
+#### Requisição DELETE: http://localhost/tickets/id
 
 
-Enjoy!
+# Enjoy!
