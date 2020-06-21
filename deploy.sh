@@ -58,7 +58,6 @@ const tickets = [];
 
 //Middleware
 function logRequest(request, response, next){
-    console.log(request);
     const {method, url} = request;
     const logLabel = \`[\${method.toUpperCase()}] \${url}\`
     console.time(logLabel); //Inicia a contagem até o próximo console.time com a mesma variável. Retorna o tempo entre elas.
