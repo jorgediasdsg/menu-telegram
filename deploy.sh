@@ -140,8 +140,8 @@ app.listen($PORT, () => {
     console.log('Back-end started!')
 })
 " > src/index.js
-echo "Iniciando NODE em $PWD/src/index.js"
+echo "Start NODE $PWD/src/index.js"
 IP=`ip addr show | grep global | head -1 | sed "s/.*inet // ; s/\/24.*//"`
-echo "Acesse a aplicação http://$IP:$PORT/tickets"
+echo "Open in http://$IP:$PORT/tickets"
 yarn dev
 echo "Aplicação encerrada"
