@@ -4,8 +4,9 @@
 #
 #   Será criado os diretórios e as dependencias básicas de um projeto.
 #
-#
-#
+############### Cfg
+PORT='3333'
+############### Script
 echo "Criando diretórios"
 mkdir backend
 mkdir backend/src
@@ -135,11 +136,12 @@ app.delete('/tickets/:id', (request, response) => {
     return response.status(204).send();
 })
 
-app.listen(3333, () => {
+app.listen($PORT, () => {
     console.log('Back-end started!')
 })
 " > src/index.js
 echo "Iniciando NODE em $PWD/src/index.js"
-echo "Acesse a aplicação http://localhost:3333/"
+IP=`ip addr show | grep global | head -1 | sed "s/.*inet // ; s/\/24.*//"`
+echo "Acesse a aplicação http://$IP:$PORT/tickets"
 yarn dev
 echo "Aplicação encerrada"
